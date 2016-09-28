@@ -1,8 +1,13 @@
 <h1>Showing selected product </h1>
-
 <p>
   Title: <%= @product.title %>
 </p>
 <p>
   Description: <%= @product.description %>
+</p>
+<p>
+  <%= link_to "Edit This Article", edit_product_path(@product) %>
+</p>
+<p>
+  <%= link_to "Back to Products", products_path %>
 </p>

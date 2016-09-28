@@ -1,4 +1,6 @@
-<h1> Create an Product </h1>
+<h1> Edit an Product </h1>
+
+
 
 <% if @product.errors.any? %>
 <h2>You can't create a product because:</h2>
@@ -23,5 +25,5 @@
   </p>
 <% end %>
 <p>
-  <%= link_to "Back to Products", products_path %>
+<%= link_to "Back to Products", product_path %>
 </p>
