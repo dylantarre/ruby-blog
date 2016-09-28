@@ -4,28 +4,34 @@ def index
   @products = Product.all
 end
 
-  def new
-    @product = Product.new
-  end
+def new
+  @product = Product.new
+end
 
-  def create
-    @product = Product.new(product_params)
-    if @product.save
-      flash[:notice] = "Product created"
-      redirect_to product_path(@product)
-    else
-      render "new"
-    end
+def create
+  @product = Product.new(product_params)
+  if @product.save
+    flash[:notice] = "Product created"
+    redirect_to product_path(@product)
+  else
+    render "new"
   end
+end
 
-  def show
-    @product = Product.find(params[:id])
-  end
+def show
+  @product = Product.find(params[:id])
+end
 
-  def edit
-    @product = Product.find(params[:id])
-  end
+def edit
+  @product = Product.find(params[:id])
+end
 
+def destroy
+  @product = Product.find(params[:id])
+  @product.destroy
+  flash[:notice] = "Product is Dunzo"
+  redirect_to products_path
+end
 
 def update
   @product = Product.find(params[:id])
