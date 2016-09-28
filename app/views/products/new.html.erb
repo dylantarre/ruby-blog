@@ -1,4 +1,13 @@
-<h1> Create an Article </h1>
+<h1> Create an Product </h1>
+
+<% if @product.errors.any? %>
+<h2>You can't create a product because:</h2>
+<ul>
+  <% @product.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
 
 <%= form_for @product do |f| %>
   <p>
