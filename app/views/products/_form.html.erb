@@ -1,26 +1,33 @@
+<%= render 'shared/errors', obj: @product %>
 
-<% if @product.errors.any? %>
-<h2>You can't create a product because:</h2>
-<ul>
-  <% @product.errors.full_messages.each do |msg| %>
-  <li><%= msg %></li>
-  <% end %>
-</ul>
-<% end %>
+<div class="container">
 
-<%= form_for @product do |f| %>
-  <p>
-    <%= f.label :title %><br/>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description %><br/>
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-<p>
-  <%= link_to "Back to Products", products_path %>
-</p>
+  <div class="col-xs-10">
+    <%= form_for(@product, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    <div class = "form-group row">
+      <label class = "col-sm-2 col-form-label">
+        <%= f.label :title %>
+      </label>
+      <div class = "col-sm-8">
+        <%= f.text_field :title, class: "form-control", placeholder: "Title", autofucus: true %>
+      </div>
+    </div>
+    <div class = "form-group row">
+      <label class = "col-sm-2 col-form-label">
+        <%= f.label :description %>
+      </label>
+      <div class = "col-sm-8">
+        <%= f.text_area :description, rows: 4, class: "form-control", placeholder: "Description" %>
+      </div>
+    </div>
+    <div class = "form-group row">
+      <div class = "offset-sm-2 col-sm-8">
+        <%= f.submit class: 'btn btn-primary btn-lg' %>
+      </div>
+    </div>
+    <% end %>
+    <p class = "offset-sm-2">
+      <%= link_to "Cancel", products_path %>
+    </p>
+  </div>
+</div>
