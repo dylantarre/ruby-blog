@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action  :set_product, only: [:edit, :update, :show, :kill]
 
 def index
   @products = Product.all
@@ -7,6 +8,7 @@ end
 def new
   @product = Product.new
 end
+
 
 def create
   @product = Product.new(product_params)
@@ -19,15 +21,12 @@ def create
 end
 
 def show
-  @product = Product.find(params[:id])
 end
 
 def edit
-  @product = Product.find(params[:id])
 end
 
-def destroy
-  @product = Product.find(params[:id])
+def kill
   @product.destroy
   flash[:notice] = "Product is Dunzo"
   redirect_to products_path
@@ -44,6 +43,9 @@ def update
 end
 
   private
+    def set_product
+      @product = Product.find(params[:id])
+    end
     def product_params
       params.require(:product).permit(:title, :description)
     end
