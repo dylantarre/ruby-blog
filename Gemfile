@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'acts-as-taggable-on', '~> 4.0'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
